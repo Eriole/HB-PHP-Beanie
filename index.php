@@ -1,23 +1,7 @@
 <?php
-    $articles = [
-        ['bonnet en laine', 10, 'Lorem ipsum dolor sit amet.'], 
-        ['bonnet en laine bio', 14, 'Lorem ipsum dolor sit amet.'], 
-        ['bonnet en laine bio et cachemire', 20, 'Lorem ipsum dolor sit amet.'],
-        ['bonnet arc-en-ciel', 12, 'Lorem ipsum dolor sit amet.'],
-    ];
+include 'functions.php';
+include 'variables.php';
 
-    function displayArticle(array $article){
-        $color = 'vert';
-        if ( $article[1] <= 12 ) { $color='bleu'; }
-        ?>
-        <tr>
-            <td><?php echo $article[0];?></td>
-            <td class=" <?php echo $color ?> "><?php echo number_format($article[1], 2);?> €</td>
-            <td><?php echo number_format($article[1]/1.2, 2);?> €</td>
-            <td><?php echo $article[2];?> </td>
-        </tr>
-        <?php
-    }
 ?>
 
 <!DOCTYPE html>
@@ -40,7 +24,7 @@
 <?php
     foreach($articles as $key => $article){
         displayArticle($article);
-    }
+    };
 ?>
 </table>
 
