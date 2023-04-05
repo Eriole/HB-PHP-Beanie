@@ -16,3 +16,7 @@ require_once 'variables.php';
     <title>Bonnets</title>
 </head>
 <body>
+    <header class="text-center">
+        <h1>Nos super bonnets !</h1>
+        <p>Gardez votre tête au chaud quelque soit la saison.</p>
+    </header>
