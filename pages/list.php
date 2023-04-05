@@ -1,7 +1,3 @@
-<?php
-include 'includes/head.php';
-?>
-
 
     <table>
         <tr>
@@ -17,6 +13,3 @@ include 'includes/head.php';
 ?>
 </table>
 
-<?php 
-include 'includes/footer.php';
-?>

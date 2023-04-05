@@ -1,9 +1,3 @@
-<?php
-include 'includes/head.php';
-
-
-?>
-
 <form action="" method="POST" class="d-flex align-items-center flex-column gap-3">
     <label for="username"> Votre pseudo :</label>
     <input type="text" name="username" id="" placeholder="pseudo">
@@ -11,10 +5,3 @@ include 'includes/head.php';
     <input type="password" name="password" id="" placeholder="votre mot de passe">
     <input type="submit" value="Connexion" class="btn btn-primary">
 </form>
-
-
-
-
-<?php 
-include 'includes/footer.php';
-?>

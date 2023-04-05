@@ -8,6 +8,6 @@ $articles = [
 
 $userName = null;
 $connexionStatus = 'Connexion';
-$connexionPage = 'login.php';
+$connexionPage = 'login';
 
 $password = 'toto';

@@ -1,7 +1,9 @@
 <?php
-session_start();
 require_once 'functions.php';
 require_once 'variables.php';
+
+//Appelle fonction session
+session_start();
 
 // Mise à jour Session à la connexion
 if (!empty($_POST['username'])){
@@ -18,7 +20,7 @@ if (!empty($_POST['username'])){
 if (isset($_SESSION['username'])){
     $userName = $_SESSION['username'];
     $connexionStatus = 'Déconnexion';
-    $connexionPage = 'logout.php';
+    $connexionPage = 'logout';
 }
 
 // Afficher un message à la déconnexion
@@ -53,12 +55,12 @@ if (!empty($_GET['disconnected']) && $_GET['disconnected'] == 1) {
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav">
-            <a class="nav-link active" aria-current="page" href="index.php">Home</a>
-            <a class="nav-link" href="list.php">Market</a>
+            <a class="nav-link active" aria-current="page" href="?page=home">Home</a>
+            <a class="nav-link" href="?page=list">Market</a>
             <!-- Affichage pseudo si session ouverte -->
             <?php if (!is_null($userName)){?><a class="nav-link" href="#"><?php echo $userName ?></a><?php }; ?>
             <!-- Modification nom et redirection bouton -->
-            <a class="nav-link" href="<?php echo $connexionPage ?>"><?php echo $connexionStatus ?></a>
+            <a class="nav-link" href="?page=<?php echo $connexionPage ?>"><?php echo $connexionStatus ?></a>
         </div>
         </div>
         </div>
