@@ -14,7 +14,7 @@ function displayArticle(array $article){
 
 function displayCardsArticle(array $article){
     ?>
-    <div class="card" style="width: 18rem;">
+    <article class="card" style="width: 18rem;">
         <img src="<?php echo $article[3];?>" class="card-img-top" alt="bonnet">
         <div class="card-body">
             <h5 class="card-title"><?php echo $article[0];?></h5>
@@ -23,6 +23,6 @@ function displayCardsArticle(array $article){
             <p class="card-text"><?php echo $article[2];?></p>
             <a href="#" class="btn btn-primary">Go somewhere</a>
         </div>
-    </div>
+    </article>
     <?php
 };
