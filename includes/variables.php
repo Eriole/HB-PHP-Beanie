@@ -9,3 +9,5 @@ $articles = [
 $userName = null;
 $connexionStatus = 'Connexion';
 $connexionPage = 'login.php';
+
+$password = 'toto';

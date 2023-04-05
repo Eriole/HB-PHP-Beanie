@@ -4,20 +4,26 @@ require_once 'functions.php';
 require_once 'variables.php';
 
 // Mise à jour Session à la connexion
-if (isset($_POST['username'])){
-    $_SESSION['username']=$_POST['username'];
-};
+if (!empty($_POST['username'])){
+    // Vérification mot de passe
+    if ($_POST['password']==$password){
+        echo '<div class="alert alert-primary d-flex align-items-center" role="alert">Connexion réussie</div>';
+        $_SESSION['username']=$_POST['username'];
+    }else{
+        echo '<div class="alert alert-danger d-flex align-items-center" role="alert">Mot de passe invalide</div>';
+    }
+}
 
 // Mise à jour navbar et redirection en fonction de la Session
 if (isset($_SESSION['username'])){
     $userName = $_SESSION['username'];
     $connexionStatus = 'Déconnexion';
     $connexionPage = 'logout.php';
-};
+}
 
 // Afficher un message à la déconnexion
 if (!empty($_GET['disconnected']) && $_GET['disconnected'] == 1) {
-    echo "<div>Vous êtes déconnecté</div>";
+    echo '<div class="alert alert-warning d-flex align-items-center" role="alert" >Vous êtes déconnecté</div>';
 };
 
 ?>
