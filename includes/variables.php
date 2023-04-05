@@ -8,3 +8,4 @@ $articles = [
 
 $userName = null;
 $connexionStatus = 'Connexion';
+$connexionPage = 'login.php';

@@ -1,13 +1,25 @@
 <?php
+session_start();
 require_once 'functions.php';
 require_once 'variables.php';
 
-// si $_post set : connexionStatus = Déconnexion et afficher "username"
-// sinon : connexionStatus= connexion
+// Mise à jour Session à la connexion
 if (isset($_POST['username'])){
+    $_SESSION['username']=$_POST['username'];
+};
+
+// Mise à jour navbar et redirection en fonction de la Session
+if (isset($_SESSION['username'])){
+    $userName = $_SESSION['username'];
     $connexionStatus = 'Déconnexion';
-    $userName = $_POST['username'];
-}
+    $connexionPage = 'logout.php';
+};
+
+// Afficher un message à la déconnexion
+if (!empty($_GET['disconnected']) && $_GET['disconnected'] == 1) {
+    echo "<div>Vous êtes déconnecté</div>";
+};
+
 ?>
 
 <!DOCTYPE html>
@@ -39,7 +51,8 @@ if (isset($_POST['username'])){
             <a class="nav-link" href="list.php">Market</a>
             <!-- Affichage pseudo si session ouverte -->
             <?php if (!is_null($userName)){?><a class="nav-link" href="#"><?php echo $userName ?></a><?php }; ?>
-            <a class="nav-link" href="login.php"><?php echo $connexionStatus ?></a>
+            <!-- Modification nom et redirection bouton -->
+            <a class="nav-link" href="<?php echo $connexionPage ?>"><?php echo $connexionStatus ?></a>
         </div>
         </div>
         </div>
