@@ -1,32 +1,20 @@
 <?php
-include 'functions.php';
-include 'variables.php';
-
+include 'includes/head.php';
 ?>
 
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <title>Bonnets</title>
-</head>
-<body>
-    <table>
-        <tr>
-            <th>Article</th>
-            <th>Prix (TTC)</th>
-            <th>Prix (TVA)</th>
-            <th>Description</th>
-        </tr>
+<section class="d-flex gap-3 justify-content-center">
 <?php
-    foreach($articles as $key => $article){
-        displayArticle($article);
-    };
+foreach($articles as $key => $article){
+    if ($key<3){
+        displayCardsArticle($article);
+    }
+};
 ?>
-</table>
+</section>
 
-</body>
-</html>
+<section class="my-2 text-center">
+    <a href="list.php" class="align-center btn btn-info">Découvrez tous nos produits</a>
+</section>
+<?php 
+include 'includes/footer.php';
+?>
