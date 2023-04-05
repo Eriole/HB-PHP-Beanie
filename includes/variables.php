@@ -5,3 +5,6 @@ $articles = [
         ['bonnet en laine bio et cachemire', 20, 'Lorem ipsum dolor sit amet.','img/bonnet_teal.jpg'],
         ['bonnet arc-en-ciel', 12, 'Lorem ipsum dolor sit amet.','img/bonnet_vert.jpg'],
     ];
+
+$userName = null;
+$connexionStatus = 'Connexion';

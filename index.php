@@ -15,6 +15,8 @@ foreach($articles as $key => $article){
 <section class="my-2 text-center">
     <a href="list.php" class="align-center btn btn-info">Découvrez tous nos produits</a>
 </section>
+
+
 <?php 
 include 'includes/footer.php';
 ?>

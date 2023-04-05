@@ -2,6 +2,12 @@
 require_once 'functions.php';
 require_once 'variables.php';
 
+// si $_post set : connexionStatus = Déconnexion et afficher "username"
+// sinon : connexionStatus= connexion
+if (isset($_POST['username'])){
+    $connexionStatus = 'Déconnexion';
+    $userName = $_POST['username'];
+}
 ?>
 
 <!DOCTYPE html>
@@ -31,8 +37,9 @@ require_once 'variables.php';
         <div class="navbar-nav">
             <a class="nav-link active" aria-current="page" href="index.php">Home</a>
             <a class="nav-link" href="list.php">Market</a>
-            <a class="nav-link" href="#">Pricing</a>
-            <a class="nav-link" href="login.php">Connexion</a>
+            <!-- Affichage pseudo si session ouverte -->
+            <?php if (!is_null($userName)){?><a class="nav-link" href="#"><?php echo $userName ?></a><?php }; ?>
+            <a class="nav-link" href="login.php"><?php echo $connexionStatus ?></a>
         </div>
         </div>
         </div>
