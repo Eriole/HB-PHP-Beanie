@@ -59,5 +59,5 @@ if(isset($_GET['type']) && $_GET['type']==='remove'){
             ?>
     </table>
     <section class="text-center my-2">
-        <a href="?page=cart&type=empty" class="btn btn-primary">Vider le panier</a>
+        <a href="?page=cart&type=empty" class="btn btn-secondary">Vider le panier</a>
     </section>

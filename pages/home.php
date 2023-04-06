@@ -10,8 +10,8 @@ foreach($articles as $key => $article){
 ?>
 </section>
 
-<section class="my-2 text-center">
-    <a href="list.php" class="align-center btn btn-info">Découvrez tous nos produits</a>
+<section class="my-4 text-center">
+    <a href="?page=list" class="align-center btn btn-success">Découvrez tous nos produits</a>
 </section>
 
 
