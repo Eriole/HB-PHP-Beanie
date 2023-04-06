@@ -57,6 +57,7 @@ if (!empty($_GET['disconnected']) && $_GET['disconnected'] == 1) {
         <div class="navbar-nav">
             <a class="nav-link active" aria-current="page" href="?page=home">Home</a>
             <a class="nav-link" href="?page=list">Market</a>
+            <a class="nav-link" href="?page=cart">Panier</a>
             <!-- Affichage pseudo si session ouverte -->
             <?php if (!is_null($userName)){?><a class="nav-link" href="#"><?php echo $userName ?></a><?php }; ?>
             <!-- Modification nom et redirection bouton -->

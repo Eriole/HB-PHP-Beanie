@@ -4,7 +4,7 @@
 <?php
 foreach($articles as $key => $article){
     if ($key<3){
-        displayCardsArticle($article);
+        displayCardsArticle($key, $article);
     }
 };
 ?>

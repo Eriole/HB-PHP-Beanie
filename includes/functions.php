@@ -1,5 +1,5 @@
 <?php 
-function displayArticle(array $article){
+function displayArticle(int $key, array $article){
         $color = 'vert';
         if ( $article[1] <= 12 ) { $color='bleu'; }
         ?>
@@ -8,11 +8,12 @@ function displayArticle(array $article){
             <td class=" <?php echo $color ?> "><?php echo number_format($article[1], 2);?> €</td>
             <td><?php echo number_format($article[1]/1.2, 2);?> €</td>
             <td><?php echo $article[2];?> </td>
+            <td><a href="?page=cart&type=add&quantity=1&id=<?php echo $key ?>" class="btn btn-primary"><?php echo $article[4];?></a></td>
         </tr>
         <?php
     };
 
-function displayCardsArticle(array $article){
+function displayCardsArticle(int $key, array $article){
     ?>
     <article class="card" style="width: 18rem;">
         <img src="<?php echo $article[3];?>" class="card-img-top" alt="bonnet">
@@ -21,7 +22,7 @@ function displayCardsArticle(array $article){
             <p class="card-text">Prix TTC : <?php echo number_format($article[1], 2);?> €</p>
             <p class="card-text">Prix HT : <?php echo number_format($article[1]/1.2, 2);?> €</p>
             <p class="card-text"><?php echo $article[2];?></p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
+            <a href="?page=cart&type=add&quantity=1&id=<?php echo $key ?>" class="btn btn-primary"><?php echo $article[4];?></a>
         </div>
     </article>
     <?php
