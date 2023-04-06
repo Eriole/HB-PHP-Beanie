@@ -7,12 +7,13 @@ session_start();
 
 // Mise à jour Session à la connexion
 if (!empty($_POST['username'])){
+    $userTest= (trim($_POST['username']));
     // Vérification mot de passe
-    if ($_POST['password']==$password){
+    if ($_POST['password']==$password && !empty($userTest)){
         echo '<div class="alert alert-primary d-flex align-items-center" role="alert">Connexion réussie</div>';
         $_SESSION['username']=$_POST['username'];
     }else{
-        echo '<div class="alert alert-danger d-flex align-items-center" role="alert">Mot de passe invalide</div>';
+        echo '<div class="alert alert-danger d-flex align-items-center" role="alert">Echec connexion</div>';
     }
 }
 
