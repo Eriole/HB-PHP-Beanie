@@ -38,7 +38,7 @@ if (!empty($_GET['disconnected']) && $_GET['disconnected'] == 1) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles/bootstrap.css">
     <link rel="stylesheet" href="styles/style.css">
-    <!-- <script src="https://kit.fontawesome.com/ed398f5d99.js" crossorigin="anonymous"></script> -->
+    <script src="https://kit.fontawesome.com/ed398f5d99.js" crossorigin="anonymous"></script>
     <script defer src="script/bootstrap.bundle.min.js"></script>
     <title>Bonnets</title>
 </head>
