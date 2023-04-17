@@ -28,12 +28,12 @@ if(!empty($_POST)){
         $erreurs['msg']=true;
     }
     else{
-        echo '<div class="alert alert-primary d-flex align-items-center" role="alert">Message envoyé</div>';
-        $userFirstName= null;
-        $userMail= null;
-        $userSujet= null;
-        $userMsg= null;
+        header('Location: ?page=contact&send=1');
     }
+}
+//Redirection pour le message envoyé
+if(isset($_GET['send'])){
+    echo '<div class="alert alert-primary d-flex align-items-center" role="alert">Message envoyé</div>';
 }
 
 ?>

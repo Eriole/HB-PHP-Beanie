@@ -48,15 +48,15 @@ if(isset($_GET['type']) && $_GET['type']==='remove'){
         foreach($cart as $idArticle => $quantity){
             ?>
             <tr>
-            <td><?php echo $articles[$idArticle][0]; ?></td>
+            <td><?php echo $articles[$idArticle]->getNom(); ?></td>
             
             <td class="text-center"><a href="?page=cart&type=add&quantity=1&id=<?php echo $idArticle ?>"><i class="fa-solid fa-plus mx-2"></i></a>
                 <?php echo $quantity; ?>
                 <a href="?page=cart&type=remove&quantity=1&id=<?php echo $idArticle ?>"><i class="fa-solid fa-minus mx-2"></i></a>
             </td>
-            <td><?php echo $articles[$idArticle][1]; ?> €</td>
-            <td><?php echo $quantity*$articles[$idArticle][1]; ?> €</td>
-            <td><?php echo round($quantity*$articles[$idArticle][1]/1.2,2);?> €</td>
+            <td><?php echo $articles[$idArticle]->getPrix(); ?> €</td>
+            <td><?php echo $quantity*$articles[$idArticle]->getPrix(); ?> €</td>
+            <td><?php echo round($quantity*$articles[$idArticle]->getPrix()/1.2,2);?> €</td>
             </tr>
             <?php 
         }
