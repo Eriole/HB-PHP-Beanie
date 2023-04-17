@@ -7,9 +7,15 @@ $articles = [
         ['bonnet arc-en-ciel', 12, 'Lorem ipsum dolor sit amet.','img/bonnet_vert.jpg', $panier],
     ];
 
+// Variables connexion
 $userName = null;
 $connexionStatus = 'Connexion';
 $connexionPage = 'login';
 
 $password = 'toto';
 
+// Variables page contact
+$userMail= null;
+$userFirstName= null;
+$userMsg= null;
+$userSujet= null;

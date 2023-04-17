@@ -7,12 +7,13 @@ session_start();
 
 // Mise à jour Session à la connexion
 if (!empty($_POST['username'])){
+    $userTest= (trim($_POST['username']));
     // Vérification mot de passe
-    if ($_POST['password']==$password){
+    if ($_POST['password']==$password && !empty($userTest)){
         echo '<div class="alert alert-primary d-flex align-items-center" role="alert">Connexion réussie</div>';
         $_SESSION['username']=$_POST['username'];
     }else{
-        echo '<div class="alert alert-danger d-flex align-items-center" role="alert">Mot de passe invalide</div>';
+        echo '<div class="alert alert-danger d-flex align-items-center" role="alert">Echec connexion</div>';
     }
 }
 
@@ -58,6 +59,7 @@ if (!empty($_GET['disconnected']) && $_GET['disconnected'] == 1) {
             <a class="nav-link active" aria-current="page" href="?page=home">Home</a>
             <a class="nav-link" href="?page=list">Market</a>
             <a class="nav-link" href="?page=cart">Panier</a>
+            <a class="nav-link" href="?page=contact">Contact</a>
             <!-- Affichage pseudo si session ouverte -->
             <?php if (!is_null($userName)){?><a class="nav-link" href="#"><?php echo $userName ?></a><?php }; ?>
             <!-- Modification nom et redirection bouton -->
