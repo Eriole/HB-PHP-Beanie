@@ -15,7 +15,7 @@ $connexionPage = 'login';
 $password = 'toto';
 
 // Variables page contact
-$userMail= 'patate@patate.com';
-$userFirstName= 'patate';
-$userMsg= 'patate';
-$userSujet= 'patate';
+$userMail= null;
+$userFirstName= null;
+$userMsg= null;
+$userSujet= null;

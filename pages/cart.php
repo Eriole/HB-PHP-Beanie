@@ -1,5 +1,10 @@
 <?php
-$cart = $_SESSION['cart'];
+//Initialisation
+if(isset($_SESSION['cart'])){
+    $cart=$_SESSION['cart'];
+    }else{
+    $cart=[];
+    }
 
 if(isset($_GET['id']) && isset($_GET['quantity']) && $_GET['type']==='add'){
     $id=$_GET['id'];
