@@ -38,15 +38,15 @@ function displayOptionFiltre(int $key, string $valeur, bool $selected){
 
     echo'>' . $valeur . '</option>';
 }
-
+//Appliquer le filtre
 function filtrePrix($article){
     return $article->getPrix()>=$_POST['prixMin'] && $article->getPrix()<=$_POST['prixMax'];
 }
 
 function filtreTaille($article){
     return in_array($_POST['taille'], $article->getTailles());
-    
 }
+
 function filtreMatiere($article){
     return in_array($_POST['matiere'], $article->getMatieres());
 }

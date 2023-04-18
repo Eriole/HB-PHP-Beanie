@@ -3,7 +3,7 @@ class Beanie
 {
     //Constantes
     public const TAILLES=['S', 'M', 'L', 'XL',];
-    public const MATIERES=['laine','coton', 'cachemire','soie',];
+    public const MATIERES=['laine','coton','cachemire','soie',];
 
     //Propriétés (variables)
     protected string $nom;

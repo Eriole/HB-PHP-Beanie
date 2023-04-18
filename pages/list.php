@@ -5,26 +5,32 @@
             <label for="taille">Taille :</label>
             <select name="taille" id="taille">
                 <option value=""></option>
-                <?php forEach( Beanie::TAILLES as $key => $taille){
-                    $selected=isset($_POST['taille'])&&$_POST['taille']==$taille; //true si correspond
+                <?php foreach (Beanie::TAILLES as $key => $taille) {
+                    $selected = isset($_POST['taille']) && $_POST['taille'] == $taille; //true si correspond
                     displayOptionFiltre($key, $taille, $selected);
-                }?>
+                } ?>
             </select>
         </li>
         <li>
             <label for="matiere">Matière :</label>
             <select name="matiere" id="matiere">
-            <option value=""></option>
-                <?php forEach( Beanie::MATIERES as $key => $matiere){
-                    $selected=isset($_POST['matiere'])&&$_POST['matiere']==$matiere; //true si correspond
+                <option value=""></option>
+                <?php foreach (Beanie::MATIERES as $key => $matiere) {
+                    $selected = isset($_POST['matiere']) && $_POST['matiere'] == $matiere; //true si correspond
                     displayOptionFiltre($key, $matiere, $selected);
-                }?>
+                } ?>
             </select>
         </li>
         <li>
             <label>Prix entre :</label>
-            <input type="number" name="prixMin" id="prixMin" placeholder="Prix min" class="w-25" value="<?php if(isset($_POST['prixMin'])){echo $_POST['prixMin'];} ?>">
-            <input type="number" name="prixMax" id="prixMax" placeholder="Prix max" class="w-25" value="<?php if(isset($_POST['prixMax'])){echo $_POST['prixMax'];} ?>">
+            <input type="number" name="prixMin" id="prixMin" placeholder="Prix min" class="w-25"
+                value="<?php if (isset($_POST['prixMin'])) {
+                    echo $_POST['prixMin'];
+                } ?>">
+            <input type="number" name="prixMax" id="prixMax" placeholder="Prix max" class="w-25"
+                value="<?php if (isset($_POST['prixMax'])) {
+                    echo $_POST['prixMax'];
+                } ?>">
         </li>
         <li>
             <input type="submit" value="Filtrer" class="btn btn-light">
@@ -33,39 +39,31 @@
 </form>
 
 <!-- Affichage -->
-    <table class="my-5 w-50 m-auto table table-bordered border-primary">
-        <tr class="text-center">
-            <th>Article</th>
-            <th>Prix (TTC)</th>
-            <th>Prix (TVA)</th>
-            <th>Description</th>
-            <th>Action</th>
-        </tr>
-        <?php
-        //Filtre des articles
-        $tableau = $articles;
+<table class="my-5 w-50 m-auto table table-bordered border-primary">
+    <tr class="text-center">
+        <th>Article</th>
+        <th>Prix (TTC)</th>
+        <th>Prix (TVA)</th>
+        <th>Description</th>
+        <th>Action</th>
+    </tr>
+    <?php
+    //Filtre des articles
+    $tableau = $articles;
 
-        if(!empty($_POST['PrixMin'])){
-            $tableau = array_filter($tableau,"filtrePrix");
-        }
-        if(!empty($_POST['taille'])){
-            $tableau = array_filter($tableau,"filtreTaille");
-        }
-        if(!empty($_POST['matiere'])){
-            $tableau = array_filter($tableau,"filtreMatiere");
-        }
+    if (!empty($_POST['PrixMin'])) {
+        $tableau = array_filter($tableau, "filtrePrix");
+    }
+    if (!empty($_POST['taille'])) {
+        $tableau = array_filter($tableau, "filtreTaille");
+    }
+    if (!empty($_POST['matiere'])) {
+        $tableau = array_filter($tableau, "filtreMatiere");
+    }
 
-        foreach($tableau as $key => $article){
-            displayArticle($key, $article);
-            }
-        /*
-        array (size=4)
-            'taille' => string 'L' (length=1)
-            'matiere' => string 'coton' (length=5)
-            'prixMin' => string '12' (length=2)
-            'prixMax' => string '24' (length=2)
-        */
-        ?>
+    foreach ($tableau as $key => $article) {
+        displayArticle($key, $article);
+    }
+    ?>
 
 </table>
-

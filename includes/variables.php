@@ -28,7 +28,7 @@ $articles = [
     ->setImage('img/bonnet_vert.jpg')
     ->setTailles(['L','S',])
     ->setMatieres(['laine','coton',]),
-    ];
+];
 
 // Variables connexion
 $userName = null;
@@ -36,9 +36,3 @@ $connexionStatus = 'Connexion';
 $connexionPage = 'login';
 
 $password = 'toto';
-
-// Variables page contact
-$userMail= null;
-$userFirstName= null;
-$userMsg= null;
-$userSujet= null;
