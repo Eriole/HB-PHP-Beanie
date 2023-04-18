@@ -1,36 +1,16 @@
 <?php
-//Initialisation
-if(isset($_SESSION['cart'])){
-    $cart=$_SESSION['cart'];
-}else{
-    $cart=[];
-}
+$cart = new Cart();
 
-// Ajout au panier
 if(isset($_GET['id']) && isset($_GET['quantity']) && $_GET['type']==='add'){
-    $id=$_GET['id'];
-    if(empty($cart[$id])){$cart[$id]= 0;}
-    $cart[$id] += $_GET['quantity'];
-    $_SESSION['cart'] = $cart;
-    header('Location: ?page=cart');
+    $cart->add($_GET['id'],$_GET['quantity']);
 }
 
-// Vider le panier
 if(isset($_GET['type']) && $_GET['type']==='empty'){
-    $cart = [];
-    $_SESSION['cart'] = $cart;
-    header('Location: ?page=cart');
+    $cart->empty($_GET['id'],$_GET['quantity']);
 }
 
-// Retirer une quantité
 if(isset($_GET['type']) && $_GET['type']==='remove'){
-    $id=$_GET['id'];
-    $cart[$id] -= $_GET['quantity'];
-    if($cart[$id]<=0){
-        unset($cart[$id]);
-    }
-    $_SESSION['cart'] = $cart;
-    header('Location: ?page=cart');
+    $cart->remove($_GET['id'],$_GET['quantity']);
 }
 
 ?>
@@ -46,8 +26,8 @@ if(isset($_GET['type']) && $_GET['type']==='remove'){
 
     <?php
         $prixTotal=0;
-    if(!empty($cart)){ //affichage panier plein
-        foreach($cart as $idArticle => $quantity){
+    if(!empty($cart->getContenu())){ //affichage panier plein
+        foreach($cart->getContenu() as $idArticle => $quantity){
             ?>
             <tr>
             <td><?php echo $articles[$idArticle]->getNom(); ?></td>
@@ -63,8 +43,8 @@ if(isset($_GET['type']) && $_GET['type']==='remove'){
             </tr>
             <?php 
         }
-    }else{ '<tr><td colspan="5" class="text-center">Panier vide</td></tr>';} //affichage panier vide
-            ?>
+    }else{ echo '<tr><td colspan="5" class="text-center">Panier vide</td></tr>';} //affichage panier vide
+        ?>
             <tr>
                 <td colspan="3">Total : </td>
                 <td><?php echo $prixTotal; ?> €</td>
