@@ -3,9 +3,10 @@
 <section class="d-flex gap-3 justify-content-center">
 <?php
 foreach($articles as $key => $article){
-    if ($key<3){
-        displayCardsArticle($key, $article);
+    if ($key>=3){
+        break;
     }
+        displayCardsArticle($key, $article);
 };
 ?>
 </section>

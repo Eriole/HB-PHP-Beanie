@@ -82,7 +82,8 @@ class Contact
 	}
 
     //methode
-    public function Validate(){
+    public function Validate()
+	{
         $erreurs=[];
         // Vérification des erreurs
         if (empty($this->userFirstName)){

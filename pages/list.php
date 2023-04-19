@@ -24,13 +24,9 @@
         <li>
             <label>Prix entre :</label>
             <input type="number" name="prixMin" id="prixMin" placeholder="Prix min" class="w-25"
-                value="<?php if (isset($_POST['prixMin'])) {
-                    echo $_POST['prixMin'];
-                } ?>">
+                value="<?php if (isset($_POST['prixMin'])) {echo $_POST['prixMin'];} ?>">
             <input type="number" name="prixMax" id="prixMax" placeholder="Prix max" class="w-25"
-                value="<?php if (isset($_POST['prixMax'])) {
-                    echo $_POST['prixMax'];
-                } ?>">
+                value="<?php if (isset($_POST['prixMax'])) { echo $_POST['prixMax'];} ?>">
         </li>
         <li>
             <input type="submit" value="Filtrer" class="btn btn-light">
@@ -49,21 +45,15 @@
     </tr>
     <?php
     //Filtre des articles
-    $tableau = $articles;
-
-    if (!empty($_POST['PrixMin'])) {
-        $tableau = array_filter($tableau, "filtrePrix");
-    }
-    if (!empty($_POST['taille'])) {
-        $tableau = array_filter($tableau, "filtreTaille");
-    }
-    if (!empty($_POST['matiere'])) {
-        $tableau = array_filter($tableau, "filtreMatiere");
+    if(!empty($_POST)){
+        $filtres = new BeanieFilter($_POST);
+        $articles = $filtres->filtrage($articles);
     }
 
-    foreach ($tableau as $key => $article) {
+    foreach ($articles as $key => $article) {
         displayArticle($key, $article);
     }
+
     ?>
 
 </table>
