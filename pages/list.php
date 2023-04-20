@@ -49,7 +49,7 @@
         $filtres = new BeanieFilter($_POST);
         $articles = $filtres->filtrage($articles);
     }
-
+    //Affichage du tableau
     foreach ($articles as $key => $article) {
         displayArticle($key, $article);
     }
