@@ -1,35 +1,16 @@
 <?php
-//Initialisation
-if(isset($_SESSION['cart'])){
-    $cart=$_SESSION['cart'];
-    }else{
-    $cart=[];
-    }
+$cart = new Cart();
 
 if(isset($_GET['id']) && isset($_GET['quantity']) && $_GET['type']==='add'){
-    $id=$_GET['id'];
-    if(empty($cart[$id])){$cart[$id]= 0;}
-    $cart[$id] += $_GET['quantity'];
-    $_SESSION['cart'] = $cart;
-    header('Location: ?page=cart');
+    $cart->add($_GET['id'],$_GET['quantity']);
 }
 
-// Vider le panier
 if(isset($_GET['type']) && $_GET['type']==='empty'){
-    $cart = [];
-    $_SESSION['cart'] = $cart;
-    header('Location: ?page=cart');
+    $cart->empty($_GET['id'],$_GET['quantity']);
 }
 
-// Retirer une quantité
 if(isset($_GET['type']) && $_GET['type']==='remove'){
-    $id=$_GET['id'];
-    $cart[$id] -= $_GET['quantity'];
-    if($cart[$id]<=0){
-        unset($cart[$id]);
-    }
-    $_SESSION['cart'] = $cart;
-    header('Location: ?page=cart');
+    $cart->remove($_GET['id'],$_GET['quantity']);
 }
 
 ?>
@@ -44,24 +25,31 @@ if(isset($_GET['type']) && $_GET['type']==='remove'){
     </tr>
 
     <?php
-    if(!empty($cart)){ //affichage panier plein
-        foreach($cart as $idArticle => $quantity){
+        $prixTotal=0;
+    if(!empty($cart->getContenu())){ //affichage panier plein
+        foreach($cart->getContenu() as $idArticle => $quantity){
             ?>
             <tr>
-            <td><?php echo $articles[$idArticle][0]; ?></td>
+            <td><?php echo $articles[$idArticle]->getNom(); ?></td>
             
             <td class="text-center"><a href="?page=cart&type=add&quantity=1&id=<?php echo $idArticle ?>"><i class="fa-solid fa-plus mx-2"></i></a>
                 <?php echo $quantity; ?>
                 <a href="?page=cart&type=remove&quantity=1&id=<?php echo $idArticle ?>"><i class="fa-solid fa-minus mx-2"></i></a>
             </td>
-            <td><?php echo $articles[$idArticle][1]; ?> €</td>
-            <td><?php echo $quantity*$articles[$idArticle][1]; ?> €</td>
-            <td><?php echo round($quantity*$articles[$idArticle][1]/1.2,2);?> €</td>
+            <td><?php echo $articles[$idArticle]->getPrix(); ?> €</td>
+            <td><?php echo $quantity*$articles[$idArticle]->getPrix();
+            $prixTotal+=$quantity*$articles[$idArticle]->getPrix(); ?> €</td>
+            <td><?php echo round($quantity*$articles[$idArticle]->getPrix()/1.2,2);?> €</td>
             </tr>
             <?php 
         }
     }else{ echo '<tr><td colspan="5" class="text-center">Panier vide</td></tr>';} //affichage panier vide
-            ?>
+        ?>
+            <tr>
+                <td colspan="3">Total : </td>
+                <td><?php echo $prixTotal; ?> €</td>
+                <td><?php echo round($prixTotal/1.2,2); ?> €</td>
+            </tr>
     </table>
     <section class="text-center my-2">
         <a href="?page=cart&type=empty" class="btn btn-secondary">Vider le panier</a>

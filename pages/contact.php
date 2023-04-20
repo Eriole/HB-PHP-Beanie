@@ -1,39 +1,21 @@
 <?php
-// Initialisation variables contact
-$userFirstName= null;
-$userMail= null;
-$userSujet= null;
-$userMsg= null;
-
 // Stockage des erreurs
 $erreurs=[];
+$message=new Contact();
 
 //Décomposition du POST contact
 if(!empty($_POST)){
-    $userFirstName = trim($_POST['firstname']);
-    $userMail = trim($_POST['mail']);
-    $userSujet = trim($_POST['sujet']);
-    $userMsg = trim($_POST['msg']);
-    // Vérification des erreurs
-    if (empty($userFirstName)){
-        $erreurs['firstname']=true;
+    $message=new Contact($_POST);
+    $erreurs=$message->validate();
+    
+    if(empty($erreurs)){
+        header('Location: ?page=contact&send=1');
     }
-    if (!filter_var($userMail, FILTER_VALIDATE_EMAIL) || empty($userMail)){
-        $erreurs['mail']=true;
-    }
-    if (empty($userSujet)){
-        $erreurs['sujet']=true;
-    }
-    if (empty($userMsg)){
-        $erreurs['msg']=true;
-    }
-    else{
-        echo '<div class="alert alert-primary d-flex align-items-center" role="alert">Message envoyé</div>';
-        $userFirstName= null;
-        $userMail= null;
-        $userSujet= null;
-        $userMsg= null;
-    }
+}
+
+//Redirection pour le message envoyé
+if(isset($_GET['send'])){
+    echo '<div class="alert alert-primary d-flex align-items-center" role="alert">Message envoyé</div>';
 }
 
 ?>
@@ -44,14 +26,14 @@ if(!empty($_POST)){
         <ul class="list-unstyled w-50">
             <li class="my-2">
                 <label for="firstname">Votre nom :</label>
-                <input type="texte" name="firstname" placeholder="Jean Didier" value="<?php echo $userFirstName ?>">
+                <input type="texte" name="firstname" placeholder="Jean Didier" value="<?php echo $message->getUserFirstName(); ?>">
                 <?php if (!empty($erreurs['firstname'])){
                     echo '<p class="badge text-bg-danger">Renseignez votre nom</p>';
                 }?>
             </li>
             <li class="my-2">
                 <label for="mail">Votre email (*) :</label>
-                <input type="email" name="mail" placeholder="jean-didier@email.com" value="<?php echo $userMail ?>">
+                <input type="email" name="mail" placeholder="jean-didier@email.com" value="<?php echo $message->getUserMail(); ?>">
                 <?php
                 if (!empty($erreurs['mail'])) {
                     echo '<p class="badge text-bg-danger">Renseignez un mail valide</p>';
@@ -63,12 +45,12 @@ if(!empty($_POST)){
         <ul class="list-unstyled w-50">
             <li class="my-2">
                 <label for="sujet">Sujet :</label>
-                <input type="texte" name="sujet" placeholder="Objet de votre message" value="<?php echo $userSujet ?>">
+                <input type="texte" name="sujet" placeholder="Objet de votre message" value="<?php echo $message->getUserSujet(); ?>">
                 <?php if (!empty($erreurs['sujet'])){
                     echo '<p class="badge text-bg-danger">Entrez le sujet de votre message<p>';
                 }?>
             </li>
-            <li><textarea placeholder="Message" name="msg" class="w-100"><?php echo $userMsg ?></textarea></li>
+            <li><textarea placeholder="Message" name="msg" class="w-100"><?php echo $message->getUserMsg(); ?></textarea></li>
                 <?php if (!empty($erreurs['msg'])){
                     echo '<p class="badge text-bg-danger">Entrez votre message</p>';
                 }?>
