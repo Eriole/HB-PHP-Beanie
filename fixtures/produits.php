@@ -3,7 +3,7 @@ spl_autoload_register(function ($class) {
     require_once "../classes/$class.php";
 });
 
-require_once '../includes/variables.php';
+require_once 'liste_produit.php';
 require_once '../includes/config.inc.php';
 
 //Vider les tables
