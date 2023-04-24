@@ -31,7 +31,7 @@ class BeanieFilter
             });
         }
         if ($this->taille) {
-            $tab =  array_filter($tableauArticle, function($article) {
+            $tableauArticle =  array_filter($tableauArticle, function($article) {
                 return in_array($this->taille, $article->getTailles());
             });
         }
