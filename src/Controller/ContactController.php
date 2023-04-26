@@ -6,6 +6,7 @@ use PDO;
 class ContactController extends AbstractController
 {
     protected string $page = 'contact';
+    public string $pageTitle ='Ecrivez-nous';
     public function getContent() :array
     {
         // Stockage des erreurs

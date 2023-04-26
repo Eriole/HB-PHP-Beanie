@@ -5,6 +5,8 @@ use PDOException;
 abstract class AbstractController 
 {
     protected string $page = 'home';
+    protected string $pageTitle = 'Accueil';
+
     protected PDO $connection;
 
     public function __construct()
@@ -30,7 +32,8 @@ abstract class AbstractController
         if (isset($_GET['page'])){
             $this->page= $_GET['page'];
         }
-
+        $pageTitle = $this->pageTitle;
+        
         include 'includes/head.php';
 
         extract($this->getContent());
@@ -42,4 +45,20 @@ abstract class AbstractController
 
         abstract public function getContent() :array ;
 
-    }
+    
+	/**
+	 * @return string
+	 */
+	public function getPageTitle(): string {
+		return $this->pageTitle;
+	}
+	
+	/**
+	 * @param string $pageTitle 
+	 * @return self
+	 */
+	public function setPageTitle(string $pageTitle): self {
+		$this->pageTitle = $pageTitle;
+		return $this;
+	}
+}

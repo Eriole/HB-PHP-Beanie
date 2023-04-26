@@ -7,6 +7,7 @@ use PDO;
 class CartController extends AbstractController
 {
     public string $page ='cart';
+    public string $pageTitle ='Votre panier';
 
     public function getContent() :array
     {

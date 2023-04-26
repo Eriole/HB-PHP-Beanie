@@ -1,4 +1,5 @@
 <?php
+use Controller\AbstractController;
 require_once 'config.inc.php';
 require_once 'functions.php';
 require_once 'variables.php';
@@ -42,7 +43,7 @@ if (!empty($_GET['disconnected']) && $_GET['disconnected'] == 1) {
     <link rel="stylesheet" href="styles/style.css">
     <script src="https://kit.fontawesome.com/ed398f5d99.js" crossorigin="anonymous"></script>
     <script defer src="script/bootstrap.bundle.min.js"></script>
-    <title>Bonnets</title>
+    <title><?php echo $pageTitle; ?></title>
 </head>
 <body>
     <header class="text-center">

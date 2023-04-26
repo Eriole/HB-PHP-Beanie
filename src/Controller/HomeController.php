@@ -6,6 +6,7 @@ use PDO;
 class HomeController extends AbstractController
 {
     public string $page='home';
+    public string $pageTitle ='Accueil';
 
     public function getContent() :array
     {

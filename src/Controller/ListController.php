@@ -6,6 +6,7 @@ use PDO;
 class ListController extends AbstractController
 {
     public string $page ='list';
+    public string $pageTitle ='Market place';
     public function getContent() :array
     {
         $request = $this->connection->prepare("SELECT beanie_id, beanie_prix, beanie_description, beanie_image, beanie_nom FROM beanie");

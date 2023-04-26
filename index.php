@@ -25,3 +25,4 @@ if (isset($_GET['page'])){
 $controller = $controllerName[$id];
 
 (new $controller())->render();
+
