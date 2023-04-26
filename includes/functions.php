@@ -1,4 +1,5 @@
 <?php 
+use Model\Beanie;
 //Affichage articles en tableau
 function displayArticle(int $key, Beanie $article){
         $color = 'vert';
