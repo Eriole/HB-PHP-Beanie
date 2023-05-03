@@ -1,13 +1,28 @@
 <?php
-ob_start();
-include 'includes/head.php';
+require_once 'includes/autoloader.php';
 
-$page='home';
+use Controller\CartController;
+use Controller\ContactController;
+use Controller\HomeController;
+use Controller\ListController;
+use Controller\LoginController;
+use Controller\LogoutController;
+
+$controllerName = [
+    'cart' => CartController::class,
+    'contact' => ContactController::class,
+    'home' => HomeController::class,
+    'list' => ListController::class,
+    'login' => LoginController::class,
+    'logout' => LogoutController::class,
+];
+
+$id = 'home';
 if (isset($_GET['page'])){
-    $page= $_GET['page'];
+    $id = $_GET['page'];
 }
-include 'pages/'. $page .'.php';
 
-include 'includes/footer.php';
-ob_end_flush();
-?>
+$controller = $controllerName[$id];
+
+(new $controller())->render();
+

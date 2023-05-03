@@ -1,4 +1,6 @@
 <?php
+use Model\Beanie;
+
 $articles = [
     (new Beanie())
     ->setNom('bonnet en laine')
