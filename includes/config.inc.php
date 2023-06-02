@@ -6,7 +6,6 @@ $password = ''; // Par défaut, pas de mot de passe sur Wamp
 
 
 try {
-
     $connection = new PDO($dsn, $user, $password, [
 
         PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
